@@ -3,7 +3,7 @@
 //device ready event
 
 document.addEventListener("deviceready", function(){
-  alert("Device Ready");
+  alert(JSON.stringify(navigator.camera));
 }, false);
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -11,10 +11,14 @@ document.addEventListener("deviceready", function(){
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
 .controller("takePicture", function($scope, $http){
-  $scope.takePhoto=function(){
+  $scope.model ={};
+
+  $scope.model.imageSource = "img/ionic.png";
+    $scope.takePhoto=function(){
     alert("Taking photo");
     navigator.camera.getPicture(function(imageData){
       alert(imageData);
+      $scope.model.imageSource = imageData.imageSource;
     },
     function(message){
       console.log(message);
