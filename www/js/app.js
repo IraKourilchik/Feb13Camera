@@ -1,5 +1,11 @@
 // Ionic Starter App
 
+//device ready event
+
+document.addEventListener("deviceready", function(){
+  alert("Device Ready");
+}, false);
+
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
@@ -8,6 +14,7 @@ angular.module('starter', ['ionic'])
   $scope.takePhoto=function(){
     alert("Taking photo");
     navigator.camera.getPicture(function(imageData){
+      alert(imageData);
     },
     function(message){
       console.log(message);
